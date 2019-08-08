@@ -27,8 +27,9 @@ from telegram.ext import MessageHandler  # for sending messages
 from telegram.ext import Filters  # for echo
 
 import zavo_functions as z  # callable functions for handlers
+import config
 
-TOKEN = '894277302:AAGfzF3Oh11Vy6BB_Sxyo5iT3V2wdVjhrfc'
+TOKEN = config.TOKEN
 
 proxy_kwargs = {'proxy_url': 'socks5h://163.172.152.192:1080'}
 updater = Updater(TOKEN, request_kwargs=proxy_kwargs, use_context=True)
