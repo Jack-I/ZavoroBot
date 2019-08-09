@@ -11,7 +11,7 @@ the Dispatcher and registered at their respective places.
 Then, the bot is started and runs infinite.
 
 Usage:
-Basic busy-friend Bot. Periodically sends one short random message from your
+Basic busy-friend replacing bot. Periodically sends one short random message from your
 friend's messages from your chat history. Also it can reply fixed phrases (10 available)
 if someone replies to bot's message.
 
@@ -19,6 +19,10 @@ Available commands:
            "/start" - initiates random posting
            "/ORU somemessage" - to make bot post "SOMEMESSAGE!!1"
            "/zatknis_nahuy" - to stop random posting
+
+Notice:
+    Please rename config.sample.py to config.py and fill TOKEN and PROXY variables
+     with correspond values
 """
 
 import logging  # guess why
@@ -29,7 +33,7 @@ from telegram.ext import MessageHandler  # for sending messages
 from telegram.ext import Filters  # for echo
 
 import zavo_functions as z  # callable functions for handlers
-import config
+import config  # to store TOKEN and PROXY variables.
 
 TOKEN = config.TOKEN
 

@@ -2,7 +2,7 @@
  in Command- and MessageHandlers in bot.py """
 
 import logging
-import random
+import random  # for setting random delay and choosing random reply
 
 from filtration import rand_uri  # for text generating
 
@@ -28,8 +28,8 @@ def start(update, context):
 
     # first start
     context.bot.send_message(chat_id=chat_id, text="Я Юрий Завоботный! Прива, петушки.")
-    interval = random.normalvariate(60, 10)
-    first = random.randint(3, 25)  # delay of fist message after /start command
+    interval = random.normalvariate(30, 10)
+    first = random.randint(3, 20)  # delay of fist message after /start command
     # Add job to queue
     # It's very important to pass chat_id optional arg to run_repeating method
     job = context.job_queue.run_repeating(alarm, interval=interval, first=first, context=chat_id)
