@@ -31,8 +31,8 @@ import config
 
 TOKEN = config.TOKEN
 
-proxy_kwargs = {'proxy_url': 'socks5h://163.172.152.192:1080'}
-updater = Updater(TOKEN, request_kwargs=proxy_kwargs, use_context=True)
+# TODO: на сервере в конфиге написать PROXY = None
+updater = Updater(TOKEN, request_kwargs=config.PROXY, use_context=True)
 dispatcher = updater.dispatcher
 job_q = updater.job_queue  # for tasks with delay
 
