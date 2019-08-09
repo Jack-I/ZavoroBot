@@ -1,5 +1,7 @@
 """
 Simple Bot to send timed Telegram messages.
+Based on python-telegram-bot library
+(https://github.com/python-telegram-bot/python-telegram-bot)
 
 To create message pool you have to manually use pre_filtration.py.
 This Bot uses the Updater class to handle the bot and the JobQueue to send
