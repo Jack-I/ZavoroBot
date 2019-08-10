@@ -28,8 +28,8 @@ def start(update, context):
 
     # first start
     context.bot.send_message(chat_id=chat_id, text="Я Юрий Завоботный! Прива, петушки.")
-    interval = random.normalvariate(30, 10)
-    first = random.randint(3, 20)  # delay of fist message after /start command
+    interval = random.normalvariate(20, 10)
+    first = random.randint(3, 10)  # delay of fist message after /start command
     # Add job to queue
     # It's very important to pass chat_id optional arg to run_repeating method
     job = context.job_queue.run_repeating(alarm, interval=interval, first=first, context=chat_id)
@@ -62,11 +62,12 @@ def shut_up(update, context):
 def echo(update, context):
     """Replies to any reply to any bot's message.
     Context arg isn't used, but it's required for MessageHandler "Callable" argument"""
-    pool = ("Нит", "Не хочу", "БИГА", "Ряба!", "Не на того напали", "*Гулкий, раскатистый звук пердежа*",
-            "А ты приходи на ДКД, раз такой умный", "♠", "тому что ты пидор ёпта",
-            "*Звук краткого пердка*", "*Звук газоизвержения торопливого, но не лишенного смысла*",
-            "У меня набор байт, как гороховый суп")
-    text = pool[random.randint(0, len(pool) - 1)]
+    # pool = ("Нит", "Не хочу", "БИГА", "Ряба!", "Не на того напали", "*Гулкий, раскатистый звук пердежа*",
+    #         "А ты приходи на ДКД, раз такой умный", "♠", "тому что ты пидор ёпта",
+    #         "*Звук краткого пердка*", "*Звук газоизвержения торопливого, но не лишенного смысла*",
+    #         "У меня набор байт, как гороховый суп")
+    # text = pool[random.randint(0, len(pool) - 1)]
+    text = rand_uri()
     update.message.reply_text(text=text)
 
 
