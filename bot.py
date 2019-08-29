@@ -36,14 +36,16 @@ import zavo_functions as z  # callable functions for handlers
 import config  # to store TOKEN and PROXY variables.
 
 TOKEN = config.TOKEN
+KWARGS = config.KWARGS
 
 # TODO: на сервере в конфиге написать PROXY = None
-updater = Updater(TOKEN, request_kwargs=config.PROXY, use_context=True)
+updater = Updater(TOKEN, request_kwargs=KWARGS, use_context=True)
 dispatcher = updater.dispatcher
 job_q = updater.job_queue  # for tasks with delay
 
 # more in https://github.com/python-telegram-bot/python-telegram-bot/wiki/Exception-Handling
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+logging.basicConfig(filename="Main.log",
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
 logger.info("BOT DEPLOYED.")

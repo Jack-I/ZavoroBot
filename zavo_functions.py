@@ -6,7 +6,7 @@ import random  # for setting random delay and choosing random reply
 
 from filtration import rand_uri  # for text generating
 
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+logging.basicConfig(filename="FunctionsLog.log", format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 
 
@@ -62,12 +62,15 @@ def shut_up(update, context):
 def echo(update, context):
     """Replies to any reply to any bot's message.
     Context arg isn't used, but it's required for MessageHandler "Callable" argument"""
-    # pool = ("Нит", "Не хочу", "БИГА", "Ряба!", "Не на того напали", "*Гулкий, раскатистый звук пердежа*",
-    #         "А ты приходи на ДКД, раз такой умный", "♠", "тому что ты пидор ёпта",
-    #         "*Звук краткого пердка*", "*Звук газоизвержения торопливого, но не лишенного смысла*",
-    #         "У меня набор байт, как гороховый суп")
-    # text = pool[random.randint(0, len(pool) - 1)]
-    text = rand_uri()
+    choice = random.randint(0, 2)
+    if not choice:  # choice == 0
+        pool = ("Нит", "Не хочу", "БИГА", "Ряба!", "Не на того напали", "*Гулкий, раскатистый звук пердежа*",
+                "А ты приходи на ДКД, раз такой умный", "♠", "тому что ты пидор ёпта",
+                "*Звук краткого пердка*", "*Звук газоизвержения торопливого, но не лишенного смысла*",
+                "У меня набор байт, как гороховый суп")
+        text = pool[random.randint(0, len(pool) - 1)]
+    else:
+        text = rand_uri()
     update.message.reply_text(text=text)
 
 
@@ -101,8 +104,8 @@ def error(update, context):
 #     logger.info("BOT STOPPED: " + str(update.message.text) )
 #     updater.stop() # TODO: сделать так, чтобы работало
 
-# обработчик неизвестных команд
-# должен стоять ПОСЛЕ всех остальных обработчиков
+# unknown command handler
+# it MUST be after all other handlers
 def unknown(update, context):
     context.bot.send_message(chat_id=update.message.chat_id,
                              text="Не понимаю я эту команду, да и она мне, собственно, до пизды.")
