@@ -6,7 +6,8 @@ import random  # for setting random delay and choosing random reply
 
 from filtration import rand_uri  # for text generating
 
-logging.basicConfig(filename="FunctionsLog.log", format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+logging.basicConfig(filename="FuncLog.log", filemode="w",
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 
 
