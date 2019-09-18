@@ -12,7 +12,7 @@ It will iterate through all html files, cleaning them and save the result in Ura
 """
 
 content = []
-max_file = 13
+max_file = 15
 target = "Юрий Заворотный\n"
 for i in range(1, max_file):  # read all group message history files, one after another
     mes = f"C:\\Users\Jack\Documents\Jupyter_Notebook\messages\messages{i}.html"
@@ -49,6 +49,6 @@ for i, line in enumerate(content):
 
 with open("Uras_speech.txt", "w+", encoding='utf-8') as f:
     f.writelines(result)
-    # Uras_speech.txt - файл c репликами Юры
+    # Uras_speech.txt - file with target's speech
 
 del result, content
