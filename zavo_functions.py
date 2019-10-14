@@ -64,14 +64,7 @@ def echo(update, context):
     """Replies to any reply to any bot's message.
     Context arg isn't used, but it's required for MessageHandler "Callable" argument"""
     choice = random.randint(0, 2)
-    if not choice:  # choice == 0
-        pool = ("Нит", "Не хочу", "БИГА", "Ряба!", "Не на того напали", "*Гулкий, раскатистый звук пердежа*",
-                "А ты приходи на ДКД, раз такой умный", "♠", "тому что ты пидор ёпта",
-                "*Звук краткого пердка*", "*Звук газоизвержения торопливого, но не лишенного смысла*",
-                "У меня набор байт, как гороховый суп")
-        text = pool[random.randint(0, len(pool) - 1)]
-    else:
-        text = rand_uri()
+    text = rand_uri()
     update.message.reply_text(text=text)
 
 
