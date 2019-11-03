@@ -12,10 +12,10 @@ It will iterate through all html files, cleaning them and save the result in Ura
 """
 
 content = []
-max_file = 15
+max_file = 16
 target = "Юрий Заворотный\n"
 for i in range(1, max_file):  # read all group message history files, one after another
-    mes = f"C:\\Users\Jack\Documents\Jupyter_Notebook\messages\messages{i}.html"
+    mes = f"messages/messages{i}.html"
     # TODO: перенести в папку и указать относ. путь
     with open(mes, 'r', encoding='utf-8') as f:
         content += f.readlines()

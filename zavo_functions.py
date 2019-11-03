@@ -24,7 +24,7 @@ def start(update, context):
 
     # check if start was called before
     if 'job' in context.chat_data:
-        update.message.reply_text('Анус себе стартани, собаня')
+        update.message.reply_text('Я уже давно работаю. Пенсия больше твоей будет')
         return
 
     # first start
@@ -46,14 +46,14 @@ def shut_up(update, context):
 
     # Check if there are no jobs in queue
     if 'job' not in context.chat_data:
-        update.message.reply_text('Да молчу я, блять, молчу!')
+        update.message.reply_text('Да молчу я, блин, молчу!')
         return
 
     # obtaining job from chat_data and removing it
     job = context.chat_data['job']
     job.schedule_removal()
     del context.chat_data['job']
-    update.message.reply_text('LADNO')
+    update.message.reply_text('Так и быть')
 
     # Add start info to log
     logger = logging.getLogger(__name__)
@@ -79,7 +79,7 @@ def helper(update, context):
     text = "Available commands:\n" \
            "/start - to make a text chaos began\n" \
            "/ORU \"message\" -> \"MESSAGE!!1\" \n" \
-           "/zatknis_nahuy - to make the bot slightly quieter"
+           "/zatknis_pozhaluysta - to make the bot slightly quieter"
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
@@ -96,13 +96,13 @@ def error(update, context):
 #                         level=logging.INFO)
 #     logger = logging.getLogger(__name__)
 #     logger.info("BOT STOPPED: " + str(update.message.text) )
-#     updater.stop() # TODO: сделать так, чтобы работало
+#     updater.stop()
 
 # unknown command handler
 # it MUST be after all other handlers
 def unknown(update, context):
     context.bot.send_message(chat_id=update.message.chat_id,
-                             text="Не понимаю я эту команду, да и она мне, собственно, до пизды.")
+                             text="Ты сам-то понял, что написал?")
     logger = logging.getLogger(__name__)
     logger.info("Unknown command: " + str(update.message.text).lstrip("/") + " from " +
                 update.message.from_user.first_name)

@@ -18,7 +18,7 @@ if someone replies to bot's message.
 Available commands:
            "/start" - initiates random posting
            "/ORU somemessage" - to make bot post "SOMEMESSAGE!!1"
-           "/zatknis_nahuy" - to stop random posting
+           "/zatknis_pozhaluysta" - to stop random posting
 
 Notice:
     Please rename config.sample.py to config.py and fill TOKEN and PROXY variables
@@ -53,7 +53,7 @@ logger.info("BOT DEPLOYED.")
 # Command handlers
 start_handler = CommandHandler('start', z.start, pass_args=True, pass_job_queue=True, pass_chat_data=True)
 dispatcher.add_handler(start_handler)
-shut_up_handler = CommandHandler('zatknis_nahuy', z.shut_up, pass_chat_data=True)
+shut_up_handler = CommandHandler('zatknis_pozhaluysta', z.shut_up, pass_chat_data=True)
 dispatcher.add_handler(shut_up_handler)
 caps_handler = CommandHandler('ORU', z.caps)
 dispatcher.add_handler(caps_handler)
