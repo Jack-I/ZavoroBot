@@ -14,14 +14,15 @@ It will iterate through all html files, cleaning them and save the result in Ura
 content = []
 max_file = 16
 target = "Юрий Заворотный\n"
-for i in range(1, max_file):  # read all group message history files, one after another
-    mes = f"messages/messages{i}.html"
-    # TODO: перенести в папку и указать относ. путь
+for i in range(1, max_file+1):  # read all group message history files, one after another
+    mes = f'messages/messages{i}.html'
+
     with open(mes, 'r', encoding='utf-8') as f:
         content += f.readlines()
 # var content - contain the text of all html files now
 
 i = 0
+print('Cleaning service info:')
 while i < len(content):
     # deleting html-tags, whitespaces, timestamps, initials, "In reply to", "Video message"
     # attached stuff, strings with any numerals
@@ -32,17 +33,22 @@ while i < len(content):
         del content[i]
     else:
         i += 1
+        if (not i%500):
+            print(".", end='')
 
 # var "content" - contains purified messages
-
+print("\nDone.\nNow cleaning from other user's messages:")
 # now move only target-human messages from var "content" to var "result"
 result = []
-exceptions = ("Photo\n", "Sticker\n", "Евгений Петухов\n", "Егор Егоров\n", "Юрий Заворотный\n", \
+# TODO: scan not only first target's message in the sequence
+exceptions = ("Photo\n", "Sticker\n", "Евгений Петухов\n", "Егор Егоров\n", \
               "Jack \n", "Илья Рыжий\n", "Саня Осокин\n", "Location\n", "Voice message\n", \
               "Video file\n", "Даша Чилякова\n", "Юля Матрехина\n", "💥💥💥\n")
 for i, line in enumerate(content):
     if content[i] == target and content[i + 1] not in exceptions:
         result.append(content[i + 1])  # adding every message from our target to var "result"
+    if (not i % 500):
+        print(".", end='')
 
 # from pprint import pprint
 # pprint(result)  # if you want to see content of var "result" on the screen in a nice way
