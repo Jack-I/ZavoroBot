@@ -10,14 +10,15 @@ change "messages{i}.html" at the end). Also, fill "max_file" variable with the m
 in your messagesX.html
 It will iterate through all html files, cleaning them and save the result in Uras_speech.txt
 """
+import os
 
 content = []
 max_file = 16
 target = "Юрий Заворотный\n"
 for i in range(1, max_file+1):  # read all group message history files, one after another
-    mes = f'messages/messages{i}.html'
+    path = os.path.join('.', 'messages', f'messages{i}.html')
 
-    with open(mes, 'r', encoding='utf-8') as f:
+    with open(path, 'r', encoding='utf-8') as f:
         content += f.readlines()
 # var content - contain the text of all html files now
 
@@ -33,7 +34,7 @@ while i < len(content):
         del content[i]
     else:
         i += 1
-        if (not i%500):
+        if not i % 500:  # show processing
             print(".", end='')
 
 # var "content" - contains purified messages
@@ -47,9 +48,9 @@ exceptions = ("Photo\n", "Sticker\n", "Евгений Петухов\n", "Его
 for i, line in enumerate(content):
     if content[i] == target and content[i + 1] not in exceptions:
         result.append(content[i + 1])  # adding every message from our target to var "result"
-    if (not i % 500):
+    if not i % 500:  # show processing
         print(".", end='')
-
+print("\nDone.")
 # from pprint import pprint
 # pprint(result)  # if you want to see content of var "result" on the screen in a nice way
 
